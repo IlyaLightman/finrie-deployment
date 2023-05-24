@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_COMPOSE_URL=""
+DOCKER_COMPOSE_URL="https://raw.githubusercontent.com/IlyaLightman/finrie-deployment/main/docker-compose.yml"
 
 check_docker_installation() {
     if command -v docker &> /dev/null; then
