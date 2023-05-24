@@ -25,6 +25,8 @@ download_docker_compose() {
 
 run_application() {
     docker-compose up
+
+    xdg-open localhost:3000
 }
 
 main() {
