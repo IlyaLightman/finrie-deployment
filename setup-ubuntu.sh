@@ -50,6 +50,19 @@ main() {
     download_docker_compose
     
     run_application
+
+    xdg-open localhost:3000
+}
+
+open_site() {
+    if which xdg-open > /dev/null
+    then
+        xdg-open URL
+    elif which gnome-open > /dev/null
+    then
+        gnome-open URL
+    fi
 }
 
 main
+open_site
