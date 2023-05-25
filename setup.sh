@@ -17,6 +17,13 @@ install_docker() {
     echo "Docker installation completed successfully."
 }
 
+install_docker_compose() {
+    echo "Docker Compose is not installed. Installing Docker Compose..."
+    sudo curl -fsSL -o /usr/local/bin/docker-compose https://github.com/docker/compose/releases/latest/download/docker-compose-Linux-x86_64
+    sudo chmod +x /usr/local/bin/docker-compose
+    echo "Docker Compose installation completed successfully."
+}
+
 download_docker_compose() {
     echo "Downloading docker-compose.yml..."
     curl -fsSL -o docker-compose.yml "${DOCKER_COMPOSE_URL}"
@@ -25,13 +32,15 @@ download_docker_compose() {
 
 run_application() {
     docker-compose up
-
-    xdg-open localhost:3000
 }
 
 main() {
     if ! check_docker_installation; then
         install_docker
+    fi
+
+    if ! command -v docker-compose &> /dev/null; then
+        install_docker_compose
     fi
     
     download_docker_compose
